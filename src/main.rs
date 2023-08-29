@@ -2,13 +2,15 @@ mod components;
 mod setup;
 mod systems;
 
-use systems::{bullet_systems, player_systems, spawner_systems};
+use systems::{bullet_systems, debug_systems, player_systems, spawner_systems};
 
 use bevy::{
     diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin},
     prelude::*,
 };
 use components::PlayerAttackTimer;
+
+const DEBUG: bool = true;
 
 fn main() {
     let mut app = App::new();
@@ -34,6 +36,10 @@ fn main() {
         bullet_systems::bullet_start_velocity.before(bullet_systems::bullet_movement),
     );
     app.add_systems(Update, bullet_systems::bullet_movement);
+
+    if DEBUG {
+        app.add_systems(Update, debug_systems::debug_collisions);
+    }
 
     app.run();
 }

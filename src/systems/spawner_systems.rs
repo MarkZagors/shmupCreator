@@ -26,6 +26,7 @@ pub fn spawn_player_bullets(
                 speed: 800.0,
                 angle: 90.0,
             },
+            CircleColider { radius: 25.0 },
         ));
     }
 }

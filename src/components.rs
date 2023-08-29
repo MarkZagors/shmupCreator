@@ -29,6 +29,11 @@ pub struct PlayerInput {
     pub shift_pressed: bool,
 }
 
+#[derive(Component)]
+pub struct CircleColider {
+    pub radius: f32,
+}
+
 //RESOURCES
 #[derive(Resource)]
 pub struct PlayerAttackTimer(pub Timer);
