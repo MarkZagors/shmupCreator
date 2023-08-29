@@ -14,4 +14,5 @@ pub struct Moving {
 #[derive(Component)]
 pub struct PlayerInput {
     pub movement_axis: Vec2,
+    pub shift_pressed: bool,
 }

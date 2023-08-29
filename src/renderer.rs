@@ -25,7 +25,7 @@ pub fn setup(mut commands: Commands) {
         SpriteBundle {
             sprite: Sprite {
                 color: Color::rgb(1.0, 0.25, 0.25),
-                custom_size: Some(Vec2::new(100.0, 100.0)),
+                custom_size: Some(Vec2::new(50.0, 50.0)),
                 ..default()
             },
             transform: Transform::from_translation(Vec3::new(-50.0, -50.0, 0.0)),
@@ -36,6 +36,7 @@ pub fn setup(mut commands: Commands) {
         },
         PlayerInput {
             movement_axis: Vec2 { x: 0.0, y: 0.0 },
+            shift_pressed: false,
         },
         Player,
     ));

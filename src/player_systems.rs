@@ -2,6 +2,9 @@ use bevy::prelude::*;
 
 use crate::components::{Moving, Player, PlayerInput};
 
+const PLAYER_SPEED_NORMAL: f32 = 400.0;
+const PLAYER_SPEED_FOCUSED: f32 = 150.0;
+
 pub fn player_set_input(
     keyboard_input: Res<Input<KeyCode>>,
     mut query: Query<&mut PlayerInput, With<Player>>,
@@ -28,6 +31,12 @@ pub fn player_set_input(
     }
 
     player_input.movement_axis = player_input.movement_axis.normalize_or_zero();
+
+    if keyboard_input.pressed(KeyCode::ShiftLeft) {
+        player_input.shift_pressed = true;
+    } else {
+        player_input.shift_pressed = false;
+    }
 }
 
 pub fn player_movement(
@@ -36,8 +45,14 @@ pub fn player_movement(
 ) {
     let (mut player_movement, mut player_transform, player_input) = query.single_mut();
 
-    player_movement.velocity.x = player_input.movement_axis.x * 150.0;
-    player_movement.velocity.y = player_input.movement_axis.y * 150.0;
+    let movement_speed: f32 = if player_input.shift_pressed {
+        PLAYER_SPEED_FOCUSED
+    } else {
+        PLAYER_SPEED_NORMAL
+    };
+
+    player_movement.velocity.x = player_input.movement_axis.x * movement_speed;
+    player_movement.velocity.y = player_input.movement_axis.y * movement_speed;
 
     player_transform.translation.x += player_movement.velocity.x * time.delta_seconds();
     player_transform.translation.y += player_movement.velocity.y * time.delta_seconds();
