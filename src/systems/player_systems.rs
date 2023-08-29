@@ -41,7 +41,7 @@ pub fn player_set_input(
 
 pub fn player_movement(
     time: Res<Time>,
-    mut query: Query<(&mut Moving, &mut Transform, &PlayerInput), With<Player>>,
+    mut query: Query<(&mut VelocityComponent, &mut Transform, &PlayerInput), With<Player>>,
 ) {
     let (mut player_movement, mut player_transform, player_input) = query.single_mut();
 

@@ -15,7 +15,7 @@ pub struct PlayerBulletSpawer;
 
 //COMPONENTS
 #[derive(Component)]
-pub struct Moving {
+pub struct VelocityComponent {
     pub velocity: Vec2,
 }
 

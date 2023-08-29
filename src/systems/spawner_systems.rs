@@ -20,8 +20,8 @@ pub fn spawn_player_bullets(
                 transform: Transform::from_translation(player_transform.translation),
                 ..default()
             },
-            Moving {
-                velocity: Vec2 { x: 0.0, y: 200.0 },
+            VelocityComponent {
+                velocity: Vec2::default(),
             },
             Bullet,
         ));

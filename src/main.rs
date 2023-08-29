@@ -1,8 +1,8 @@
-mod bullet_systems;
 mod components;
-mod player_systems;
-mod renderer;
-mod spawner_systems;
+mod setup;
+mod systems;
+
+use systems::{bullet_systems, player_systems, spawner_systems};
 
 use bevy::{
     diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin},
@@ -22,7 +22,7 @@ fn main() {
         TimerMode::Repeating,
     )));
 
-    app.add_systems(Startup, renderer::setup);
+    app.add_systems(Startup, setup::setup);
 
     app.add_systems(Update, bevy::window::close_on_esc);
     app.add_systems(Update, player_systems::player_set_input);
