@@ -1,4 +1,4 @@
-use crate::components::{Bullet, Moving};
+use crate::components::*;
 use bevy::prelude::*;
 
 pub fn bullet_movement(

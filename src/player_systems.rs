@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use crate::components::{Moving, Player, PlayerInput};
+use crate::components::*;
 
 const PLAYER_SPEED_NORMAL: f32 = 400.0;
 const PLAYER_SPEED_FOCUSED: f32 = 150.0;
