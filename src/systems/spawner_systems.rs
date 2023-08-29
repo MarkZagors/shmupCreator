@@ -20,10 +20,12 @@ pub fn spawn_player_bullets(
                 transform: Transform::from_translation(player_transform.translation),
                 ..default()
             },
-            VelocityComponent {
-                velocity: Vec2::default(),
-            },
             Bullet,
+            Velocity(Vec2::default()),
+            Speed {
+                speed: 800.0,
+                angle: 90.0,
+            },
         ));
     }
 }

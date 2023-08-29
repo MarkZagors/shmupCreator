@@ -41,9 +41,9 @@ pub fn player_set_input(
 
 pub fn player_movement(
     time: Res<Time>,
-    mut query: Query<(&mut VelocityComponent, &mut Transform, &PlayerInput), With<Player>>,
+    mut query: Query<(&mut Velocity, &mut Transform, &PlayerInput), With<Player>>,
 ) {
-    let (mut player_movement, mut player_transform, player_input) = query.single_mut();
+    let (mut player_velocity, mut player_transform, player_input) = query.single_mut();
 
     let movement_speed: f32 = if player_input.shift_pressed {
         PLAYER_SPEED_FOCUSED
@@ -51,9 +51,9 @@ pub fn player_movement(
         PLAYER_SPEED_NORMAL
     };
 
-    player_movement.velocity.x = player_input.movement_axis.x * movement_speed;
-    player_movement.velocity.y = player_input.movement_axis.y * movement_speed;
+    player_velocity.0.x = player_input.movement_axis.x * movement_speed;
+    player_velocity.0.y = player_input.movement_axis.y * movement_speed;
 
-    player_transform.translation.x += player_movement.velocity.x * time.delta_seconds();
-    player_transform.translation.y += player_movement.velocity.y * time.delta_seconds();
+    player_transform.translation.x += player_velocity.0.x * time.delta_seconds();
+    player_transform.translation.y += player_velocity.0.y * time.delta_seconds();
 }

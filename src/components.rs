@@ -15,8 +15,12 @@ pub struct PlayerBulletSpawer;
 
 //COMPONENTS
 #[derive(Component)]
-pub struct VelocityComponent {
-    pub velocity: Vec2,
+pub struct Velocity(pub Vec2);
+
+#[derive(Component)]
+pub struct Speed {
+    pub speed: f32,
+    pub angle: f32,
 }
 
 #[derive(Component)]

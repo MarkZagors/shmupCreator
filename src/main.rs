@@ -27,8 +27,13 @@ fn main() {
     app.add_systems(Update, bevy::window::close_on_esc);
     app.add_systems(Update, player_systems::player_set_input);
     app.add_systems(Update, player_systems::player_movement);
-    app.add_systems(Update, bullet_systems::bullet_movement);
     app.add_systems(Update, spawner_systems::spawn_player_bullets);
+
+    app.add_systems(
+        Update,
+        bullet_systems::bullet_start_velocity.before(bullet_systems::bullet_movement),
+    );
+    app.add_systems(Update, bullet_systems::bullet_movement);
 
     app.run();
 }

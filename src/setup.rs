@@ -16,9 +16,7 @@ pub fn setup(mut commands: Commands) {
             transform: Transform::from_translation(Vec3::new(-50.0, -50.0, 0.0)),
             ..default()
         },
-        VelocityComponent {
-            velocity: Vec2 { x: 100.0, y: 100.0 },
-        },
+        Velocity(Vec2::default()),
         PlayerInput {
             movement_axis: Vec2 { x: 0.0, y: 0.0 },
             shift_pressed: false,
