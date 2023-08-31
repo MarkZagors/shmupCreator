@@ -24,10 +24,10 @@ pub fn spawn_player_bullets(
             BulletPlayer,
             Velocity(Vec2::default()),
             Speed {
-                speed: 200.0,
+                speed: 800.0,
                 angle: 90.0,
             },
-            CircleColider { radius: 25.0 },
+            CircleColider { radius: 12.5 },
         ));
     }
 }

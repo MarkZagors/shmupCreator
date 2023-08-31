@@ -10,7 +10,7 @@ use bevy::{
 };
 use components::PlayerAttackTimer;
 
-const DEBUG: bool = true;
+const DEBUG: bool = false;
 
 fn main() {
     let mut app = App::new();
@@ -31,6 +31,7 @@ fn main() {
     app.add_systems(Update, player_systems::player_movement);
     app.add_systems(Update, spawner_systems::spawn_player_bullets);
     app.add_systems(Update, collision_systems::check_boss_collisions);
+    app.add_systems(Update, collision_systems::despawn_bullets);
 
     app.add_systems(
         Update,
