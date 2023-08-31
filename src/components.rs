@@ -5,7 +5,16 @@ use bevy::prelude::*;
 pub struct Bullet;
 
 #[derive(Component)]
+pub struct BulletPlayer;
+
+#[derive(Component)]
+pub struct BulletEnemy;
+
+#[derive(Component)]
 pub struct Player;
+
+#[derive(Component)]
+pub struct Boss;
 
 #[derive(Component)]
 pub struct Spawner;

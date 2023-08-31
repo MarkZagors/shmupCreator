@@ -14,16 +14,17 @@ pub fn spawn_player_bullets(
             SpriteBundle {
                 sprite: Sprite {
                     color: Color::rgb(0.25, 0.25, 0.25),
-                    custom_size: Some(Vec2::new(50.0, 50.0)),
+                    custom_size: Some(Vec2::new(25.0, 25.0)),
                     ..default()
                 },
                 transform: Transform::from_translation(player_transform.translation),
                 ..default()
             },
             Bullet,
+            BulletPlayer,
             Velocity(Vec2::default()),
             Speed {
-                speed: 800.0,
+                speed: 200.0,
                 angle: 90.0,
             },
             CircleColider { radius: 25.0 },

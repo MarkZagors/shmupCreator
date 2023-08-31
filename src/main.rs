@@ -2,7 +2,7 @@ mod components;
 mod setup;
 mod systems;
 
-use systems::{bullet_systems, debug_systems, player_systems, spawner_systems};
+use systems::{bullet_systems, collision_systems, debug_systems, player_systems, spawner_systems};
 
 use bevy::{
     diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin},
@@ -30,6 +30,7 @@ fn main() {
     app.add_systems(Update, player_systems::player_set_input);
     app.add_systems(Update, player_systems::player_movement);
     app.add_systems(Update, spawner_systems::spawn_player_bullets);
+    app.add_systems(Update, collision_systems::check_boss_collisions);
 
     app.add_systems(
         Update,

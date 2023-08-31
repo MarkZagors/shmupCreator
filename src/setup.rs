@@ -27,5 +27,18 @@ pub fn setup(mut commands: Commands) {
     //PLAYER BULLET SPAWNER
     commands.spawn((TransformBundle::default(), Spawner, PlayerBulletSpawer));
 
-
+    //BOSS
+    commands.spawn((
+        SpriteBundle {
+            sprite: Sprite {
+                color: Color::rgb(0.25, 1.00, 0.25),
+                custom_size: Some(Vec2::new(50.0, 50.0)),
+                ..default()
+            },
+            transform: Transform::from_translation(Vec3::new(-50.0, 50.0, 0.0)),
+            ..default()
+        },
+        CircleColider { radius: 30.0 },
+        Boss,
+    ));
 }
