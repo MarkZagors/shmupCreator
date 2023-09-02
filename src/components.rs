@@ -22,6 +22,9 @@ pub struct Spawner;
 #[derive(Component)]
 pub struct PlayerBulletSpawer;
 
+#[derive(Component)]
+pub struct GameCamera;
+
 //COMPONENTS
 #[derive(Component)]
 pub struct Velocity(pub Vec2);
@@ -46,3 +49,6 @@ pub struct CircleColider {
 //RESOURCES
 #[derive(Resource)]
 pub struct PlayerAttackTimer(pub Timer);
+
+#[derive(Resource)]
+pub struct WindowSize(pub Vec2);
