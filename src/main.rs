@@ -33,7 +33,7 @@ fn main() {
         y: 1024.0,
     }));
 
-    app.add_systems(Startup, setup::setup_camera);
+    app.add_systems(Startup, setup::setup_cameras);
     app.add_systems(Startup, setup::setup);
 
     app.add_systems(Update, bevy::window::close_on_esc);

@@ -25,6 +25,9 @@ pub struct PlayerBulletSpawer;
 #[derive(Component)]
 pub struct GameCamera;
 
+#[derive(Component)]
+pub struct UIGameContainer(pub Vec2);
+
 //COMPONENTS
 #[derive(Component)]
 pub struct Velocity(pub Vec2);
