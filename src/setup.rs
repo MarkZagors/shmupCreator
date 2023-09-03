@@ -105,19 +105,4 @@ pub fn setup(mut commands: Commands) {
         },
         ..default()
     },));
-
-    //GAME UI CONTAINER
-    commands.spawn((
-        SpriteBundle {
-            sprite: Sprite {
-                color: Color::rgb(0.0, 0.00, 0.5),
-                custom_size: Some(Vec2::new(1000.0, 1000.0)),
-                ..default()
-            },
-            transform: Transform::from_translation(Vec3::new(0.0, 0.0, 0.0)),
-            ..default()
-        },
-        RenderLayers::layer(1),
-        UIGameContainer(Vec2::new(500.0, 500.0)),
-    ));
 }
