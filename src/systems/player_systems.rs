@@ -14,11 +14,11 @@ pub fn player_set_input(
     player_input.movement_axis.x = 0.0;
     player_input.movement_axis.y = 0.0;
 
-    if keyboard_input.pressed(KeyCode::D) || keyboard_input.pressed(KeyCode::Left) {
+    if keyboard_input.pressed(KeyCode::D) || keyboard_input.pressed(KeyCode::Right) {
         player_input.movement_axis.x += 1.0;
     }
 
-    if keyboard_input.pressed(KeyCode::A) || keyboard_input.pressed(KeyCode::Right) {
+    if keyboard_input.pressed(KeyCode::A) || keyboard_input.pressed(KeyCode::Left) {
         player_input.movement_axis.x -= 1.0;
     }
 
@@ -41,9 +41,10 @@ pub fn player_set_input(
 
 pub fn player_movement(
     time: Res<Time>,
-    mut query: Query<(&mut Velocity, &mut Transform, &PlayerInput), With<Player>>,
+    mut player_query: Query<(&mut Velocity, &mut Transform, &PlayerInput), With<Player>>,
+    game_window_size: Res<WindowSize>,
 ) {
-    let (mut player_velocity, mut player_transform, player_input) = query.single_mut();
+    let (mut player_velocity, mut player_transform, player_input) = player_query.single_mut();
 
     let movement_speed: f32 = if player_input.shift_pressed {
         PLAYER_SPEED_FOCUSED
@@ -56,4 +57,14 @@ pub fn player_movement(
 
     player_transform.translation.x += player_velocity.0.x * time.delta_seconds();
     player_transform.translation.y += player_velocity.0.y * time.delta_seconds();
+
+    player_transform.translation.x = player_transform
+        .translation
+        .x
+        .clamp(-game_window_size.0.x / 2.0, game_window_size.0.x / 2.0);
+
+    player_transform.translation.y = player_transform
+        .translation
+        .y
+        .clamp(-game_window_size.0.y / 2.0, game_window_size.0.y / 2.0);
 }
