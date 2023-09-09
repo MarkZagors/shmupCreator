@@ -1,5 +1,14 @@
 use bevy::prelude::*;
 
+//STATES
+#[derive(States, PartialEq, Eq, Debug, Clone, Hash, Default)]
+pub enum AppState {
+    #[default]
+    MainMenu,
+    InGame,
+    Editor,
+}
+
 //MARKERS
 #[derive(Component)]
 pub struct Bullet;

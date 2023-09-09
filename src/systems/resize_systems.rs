@@ -1,7 +1,7 @@
 use crate::components::*;
 use bevy::{prelude::*, window::WindowResized};
 
-pub fn on_window_resize(
+pub fn on_window_resize_ingame(
     mut resize_events: EventReader<WindowResized>,
     mut game_camera_query: Query<&mut Camera, With<GameCamera>>,
     game_window_size: Res<WindowSize>,
